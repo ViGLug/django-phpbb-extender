@@ -22,7 +22,7 @@ Configuration
     vi settings.py # configure at least your database
     cd ..
     export DJANGO_PHPBB_EXTENDER_KEY="secret_key" # change it!
-    python manage.py inspectdb > api/models.py
+    python manage.py inspectdb > django_phpbb_extender/models.py
 
 Run
 ---

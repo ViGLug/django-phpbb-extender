@@ -1,10 +1,11 @@
 from rest_framework import serializers
-from .models import (
+from django_phpbb_extender.models import (
     PhpbbUsers,
     PhpbbForums,
     PhpbbTopics,
     PhpbbPosts,
 )
+from django_phpbb_extender.utils import phpbb_to_html
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,6 +36,11 @@ class TopicSerializer(serializers.ModelSerializer):
         )
 
 class PostSerializer(serializers.ModelSerializer):
+    post_text_html = serializers.SerializerMethodField('get_post_text_html')
+    
+    def get_post_text_html(self, obj):
+        return phpbb_to_html(obj.post_text)
+    
     class Meta:
         model = PhpbbPosts
         fields = (
@@ -42,5 +48,5 @@ class PostSerializer(serializers.ModelSerializer):
             'topic_id',
             'forum_id',
             'poster_id',
-            'post_text',
+            'post_text_html',
         )
