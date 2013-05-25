@@ -20,8 +20,7 @@ parser = bbcode.Parser(escape_html=False, replace_links=False)
 clean = re.compile(r"(:[\w:]+)(?=])")
 
 def phpbb_to_html(text):
-    decoded = text.decode('utf-8')
-    coloured = decoded.replace('{SMILIES_PATH}', SMILIES_PATH)
+    coloured = text.replace('{SMILIES_PATH}', SMILIES_PATH)
     unquoted = HTMLParser.unescape.__func__(HTMLParser, coloured)
     cleaned = clean.sub('', unquoted)
     return parser.format(cleaned)
