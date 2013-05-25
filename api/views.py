@@ -21,9 +21,11 @@ class UserReadView(generics.RetrieveAPIView):
 class UserPostsReadView(generics.ListAPIView):
     serializer_class = PostSerializer
     model = serializer_class.Meta.model
-    queryset = model.objects.order_by('post_time').reverse()
-    lookup_field = 'poster_id'
     paginate_by = 100
+    def get_queryset(self):
+        poster_id = self.kwargs['poster_id']
+        queryset = self.model.objects.filter(poster_id=poster_id)
+        return queryset.order_by('-post_time')
 
 class ForumsReadView(generics.ListAPIView):
     serializer_class = ForumSerializer
@@ -37,7 +39,7 @@ class ForumReadView(generics.RetrieveAPIView):
 class TopicsReadView(generics.ListAPIView):
     serializer_class = TopicSerializer
     model = serializer_class.Meta.model
-    queryset = model.objects.order_by('topic_time').reverse()
+    queryset = model.objects.order_by('-topic_time')
     paginate_by = 100
 
 class TopicReadView(generics.RetrieveAPIView):
@@ -48,14 +50,16 @@ class TopicReadView(generics.RetrieveAPIView):
 class TopicPostsReadView(generics.ListAPIView):
     serializer_class = PostSerializer
     model = serializer_class.Meta.model
-    queryset = model.objects.order_by('post_time').reverse()
-    lookup_field = 'topic_id'
     paginate_by = 100
+    def get_queryset(self):
+        topic_id = self.kwargs['topic_id']
+        queryset = self.model.objects.filter(topic_id=topic_id)
+        return queryset.order_by('-post_time')
 
 class PostsReadView(generics.ListAPIView):
     serializer_class = PostSerializer
     model = serializer_class.Meta.model
-    queryset = model.objects.order_by('post_time').reverse()
+    queryset = model.objects.order_by('-post_time')
     paginate_by = 100
 
 class PostReadView(generics.RetrieveAPIView):
