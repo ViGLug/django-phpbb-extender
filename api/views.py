@@ -36,6 +36,15 @@ class ForumReadView(generics.RetrieveAPIView):
     model = serializer_class.Meta.model
     lookup_field = 'forum_id'
 
+class ForumTopicsReadView(generics.ListAPIView):
+    serializer_class = TopicSerializer
+    model = serializer_class.Meta.model
+    paginate_by = 100
+    def get_queryset(self):
+        forum_id = self.kwargs['forum_id']
+        queryset = self.model.objects.filter(forum_id=forum_id)
+        return queryset.order_by('-topic_last_post_time')
+
 class TopicsReadView(generics.ListAPIView):
     serializer_class = TopicSerializer
     model = serializer_class.Meta.model

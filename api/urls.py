@@ -28,6 +28,11 @@ urlpatterns = patterns('',
         name='forum_rest_api'
     ),
     url(
+        regex=r'^forum/(?P<forum_id>[0-9]+)/topic/$',
+        view=views.ForumTopicsReadView.as_view(),
+        name='forumtopics_rest_api'
+    ),
+    url(
         regex=r'^topic/$',
         view=views.TopicsReadView.as_view(),
         name='topics_rest_api'
