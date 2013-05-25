@@ -1,6 +1,9 @@
 Requirements
 ------------
 
+Be sure to have installed mysql and mysql-devel
+
+    pip install MySQL-python
     pip install Django
     pip install djangorestframework
     pip install bbcode
