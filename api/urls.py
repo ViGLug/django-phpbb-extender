@@ -1,0 +1,55 @@
+from django.conf.urls import patterns, url
+from . import views
+
+urlpatterns = patterns('',
+    url(
+        regex=r'^user/$',
+        view=views.UsersReadView.as_view(),
+        name='users_rest_api'
+    ),
+    url(
+        regex=r'^user/(?P<user_id>[0-9]+)/$',
+        view=views.UserReadView.as_view(),
+        name='user_rest_api'
+    ),
+    url(
+        regex=r'^user/(?P<poster_id>[0-9]+)/post/$',
+        view=views.UserPostsReadView.as_view(),
+        name='userposts_rest_api'
+    ),    
+    url(
+        regex=r'^forum/$',
+        view=views.ForumsReadView.as_view(),
+        name='forums_rest_api'
+    ),
+    url(
+        regex=r'^forum/(?P<forum_id>[0-9]+)/$',
+        view=views.ForumReadView.as_view(),
+        name='forum_rest_api'
+    ),
+    url(
+        regex=r'^topic/$',
+        view=views.TopicsReadView.as_view(),
+        name='topics_rest_api'
+    ),
+    url(
+        regex=r'^topic/(?P<topic_id>[0-9]+)/$',
+        view=views.TopicReadView.as_view(),
+        name='topic_rest_api'
+    ),
+    url(
+        regex=r'^topic/(?P<topic_id>[0-9]+)/post/$',
+        view=views.TopicPostsReadView.as_view(),
+        name='topicposts_rest_api'
+    ),
+    url(
+        regex=r'^post/$',
+        view=views.PostsReadView.as_view(),
+        name='posts_rest_api'
+    ),
+    url(
+        regex=r'^post/(?P<post_id>[0-9]+)/$',
+        view=views.PostReadView.as_view(),
+        name='post_rest_api'
+    ),
+)
