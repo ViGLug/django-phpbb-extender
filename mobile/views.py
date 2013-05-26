@@ -7,7 +7,7 @@ class Topics(TemplateView):
     template_name = "topics.html"
     
     def get_context_data(self, **kwargs):
-        context = super(Mobile, self).get_context_data(**kwargs)
+        context = super(Topics, self).get_context_data(**kwargs)
         context["title"] = FORUM_NAME
         topics = PhpbbTopics.objects.order_by('-topic_time')[:10]
         latest = []
