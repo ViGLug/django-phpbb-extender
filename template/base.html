@@ -3,7 +3,9 @@
 <html>
 <head>
     <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet" />
     <link type="application/rss+xml" rel="alternate" href="{% url 'topics_rss' %}" />
     <link type="application/atom+xml" rel="alternate" href="{% url 'topics_atom' %}" />
 </head>
@@ -11,12 +13,25 @@
 
 <div class="container">
 
-<h1 id="header">Latest {{ latest|length }} {{ category }}</h1>
 
+<div class="masthead" id="header">
+    <ul class="nav nav-pills pull-right">
+        <li {% if category == 'topics' %}class="active"{% endif %}>
+            <a href="{% url 'topics' %}">Topics</a>
+        </li>
+        <li {% if category == 'posts' %}class="active"{% endif %}>
+            <a href="{% url 'posts' %}">Posts</a>
+        </li>
+    </ul>
+    <h3 class="muted">Latest {{ latest|length }} {{ category }}</h3>
+</div>
+
+<div class="container">
+<div class="span12">
 {% for username, title, text, link in latest %}
     <hr />
     <div class="row">
-        <h3>[{{ username }}] {{ title }}</h3>
+        <h4>[{{ username }}] {{ title }}</h4>
         <p>{{ text|safe }}</p>
         <div style="text-align: right">
             <div class="btn-group">
@@ -26,6 +41,8 @@
         </div>
     </div>
 {% endfor %}
+</div>
+</div>
 
 </div>
 
