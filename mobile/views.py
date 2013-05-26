@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django_phpbb_extender.models import PhpbbTopics, PhpbbPosts
-from django_phpbb_extender.forum_settings import FORUM_NAME
+from django_phpbb_extender.forum_settings import FORUM_NAME, FORUM_PATH
 from django_phpbb_extender.utils import phpbb_to_html
 
 class Topics(TemplateView):
@@ -15,6 +15,7 @@ class Topics(TemplateView):
             post = PhpbbPosts.objects.get(post_id=topic.topic_first_post_id)
             latest.append((
                 topic,
+                FORUM_PATH+"viewtopic.php?t=%s" % topic.topic_id,
                 phpbb_to_html(post.post_text),
             ))
         context["latest"] = latest

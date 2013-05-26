@@ -7,13 +7,23 @@
 </head>
 <body>
 
+<div class="container">
+
 <h1>Latest 10 topics</h1>
 
-{% for topic, first_post in latest %}
-    <br />
-    <h4>[{{ topic.topic_first_poster_name }}] {{ topic.topic_title }}</h4>
-    <p>{{ first_post|safe }}</p>
+{% for topic, topic_link, first_post in latest %}
+    <hr />
+    <div class="row">
+        <h4>[{{ topic.topic_first_poster_name }}] {{ topic.topic_title }}</h4>
+        <p>{{ first_post|safe }}</p>
+        <div style="text-align: right">
+            <a href="{{ topic_link }}">
+                <button class="btn">Read more</button>
+            </a>
+        </div>
+    </div>
 {% endfor %}
+
 </div>
 
 <script src="http://code.jquery.com/jquery.js"></script>
