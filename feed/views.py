@@ -4,6 +4,7 @@ from django_phpbb_extender.models import PhpbbPosts, PhpbbTopics
 from django_phpbb_extender.utils import (
     get_username,
     get_forum,
+    unquote,
     phpbb_to_html,
 )
 from django_phpbb_extender.forum_settings import (
@@ -21,7 +22,7 @@ class PostsRSS(Feed):
         return PhpbbPosts.objects.order_by('-post_time')[:20]
     
     def item_title(self, item):
-        return phpbb_to_html(item.post_subject)
+        return unquote(item.post_subject)
     
     def item_description(self, item):
         user = get_username(item.poster_id)

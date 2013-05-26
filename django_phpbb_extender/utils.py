@@ -7,9 +7,12 @@ from .forum_settings import SMILIES_PATH
 parser = bbcode.Parser(escape_html=False, replace_links=False)
 clean = re.compile(r"(:[\w:]+)(?=])")
 
+def unquote(quoted):
+    return HTMLParser.unescape.__func__(HTMLParser, quoted)
+
 def phpbb_to_html(text):
     coloured = text.replace('{SMILIES_PATH}', SMILIES_PATH)
-    unquoted = HTMLParser.unescape.__func__(HTMLParser, coloured)
+    unquoted = unquote(coloured)
     cleaned = clean.sub('', unquoted)
     return parser.format(cleaned)
 

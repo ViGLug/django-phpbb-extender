@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <title>Latest {{ latest|length }} {{ category }} from {{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
     <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet" />
@@ -14,7 +14,7 @@
 <div class="container">
 
 
-<div class="masthead" id="header">
+<div class="masthead">
     <ul class="nav nav-pills pull-right">
         <li {% if category == 'topics' %}class="active"{% endif %}>
             <a href="{% url 'topics' %}">Topics</a>
@@ -26,27 +26,31 @@
     <h3 class="muted">Latest {{ latest|length }} {{ category }}</h3>
 </div>
 
+<hr />
+
 <div class="container">
-<div class="span12">
+<div class="row">
 {% for username, title, text, link in latest %}
-    <hr />
-    <div class="row">
+    <div class="span12">
         <h4>[{{ username }}] {{ title }}</h4>
         <p>{{ text|safe }}</p>
         <div style="text-align: right">
             <div class="btn-group">
-                <a href="#header" class="btn">Back to top</a>
+                <a href="#" class="btn">Back to top</a>
                 <a href="{{ link }}" class="btn">Read more</a>
             </div>
         </div>
+        <hr />
     </div>
 {% endfor %}
 </div>
 </div>
 
+<div class="footer" style="text-align: right">
+    <p>Data extracted from: <a href="{{ forum_path }}">{{ title }}</a></p>
 </div>
 
-<br />
+</div>
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
