@@ -1,4 +1,4 @@
-from .models import PhpbbConfig, PhpbbPosts, PhpbbUsers
+from .models import PhpbbConfig
 
 def get_config(value):
     return PhpbbConfig.objects.get(config_name=value).config_value
