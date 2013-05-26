@@ -17,4 +17,5 @@ urlpatterns = patterns('',
 
     url(r'^api/', include('api.urls')),
     url(r'^feed/', include('feed.urls')),
+    url(r'^mobile/', include('mobile.urls')),
 )
