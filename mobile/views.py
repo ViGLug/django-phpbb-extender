@@ -10,7 +10,7 @@ class Posts(TemplateView):
         context = super(Posts, self).get_context_data(**kwargs)
         context["title"] = FORUM_NAME
         context["category"] = "posts"
-        posts = PhpbbPosts.objects.order_by('-post_time')[:10]
+        posts = PhpbbPosts.objects.order_by('-post_time')[:20]
         latest = []
         for post in posts:
             latest.append((
