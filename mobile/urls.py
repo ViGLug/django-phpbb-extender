@@ -3,7 +3,12 @@ from . import views
 
 urlpatterns = patterns('',
     url(
-        regex=r'^topic/',
+        regex=r'^post/$',
+        view=views.Posts.as_view(),
+        name='posts'
+    ),
+    url(
+        regex=r'^topic/$',
         view=views.Topics.as_view(),
         name='topics'
     ),

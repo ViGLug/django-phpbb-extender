@@ -11,17 +11,17 @@
 
 <div class="container">
 
-<h1 id="header">Latest 10 topics</h1>
+<h1 id="header">Latest {{ latest|length }} {{ category }}</h1>
 
-{% for topic, topic_link, first_post in latest %}
+{% for username, title, text, link in latest %}
     <hr />
     <div class="row">
-        <h3>[{{ topic.topic_first_poster_name }}] {{ topic.topic_title }}</h3>
-        <p>{{ first_post|safe }}</p>
+        <h3>[{{ username }}] {{ title }}</h3>
+        <p>{{ text|safe }}</p>
         <div style="text-align: right">
             <div class="btn-group">
                 <a href="#header" class="btn">Back to top</a>
-                <a href="{{ topic_link }}" class="btn">Read more</a>
+                <a href="{{ link }}" class="btn">Read more</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
 
 <br />
 
-<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
 </body>
