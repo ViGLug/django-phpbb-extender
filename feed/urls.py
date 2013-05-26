@@ -12,4 +12,14 @@ urlpatterns = patterns('',
         view=views.PostsAtom(),
         name='posts_atom'
     ),
+    url(
+        regex=r'^rss/topic/$',
+        view=views.TopicsRSS(),
+        name='topics_rss'
+    ),
+    url(
+        regex=r'^atom/topic/$',
+        view=views.TopicsAtom(),
+        name='topics_atom'
+    ),
 )
