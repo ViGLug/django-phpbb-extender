@@ -13,6 +13,7 @@ Installation
 
     git clone git://github.com/frafra/django-phpbb-extender.git
     cd django_phpbb_extender # project directory
+    mkdir static
     cd static
     wget http://twitter.github.io/bootstrap/assets/bootstrap.zip
     unzip bootstrap.zip
