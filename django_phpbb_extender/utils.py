@@ -20,7 +20,7 @@ def get_username(uid):
     if uid not in username_cache:
         username = PhpbbUsers.objects.get(user_id=uid)
         username_cache[uid] = username
-    return cache[uid]
+    return username_cache[uid]
 
 forum_cache = {}
 
