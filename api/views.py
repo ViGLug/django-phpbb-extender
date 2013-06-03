@@ -1,5 +1,5 @@
 #from django.contrib.auth.models import User, Group
-from rest_framework import generics
+from rest_framework import filters, generics
 from .serializers import (
     UserSerializer,
     ForumSerializer,
@@ -30,6 +30,8 @@ class UserPostsReadView(generics.ListAPIView):
 class ForumsReadView(generics.ListAPIView):
     serializer_class = ForumSerializer
     model = serializer_class.Meta.model
+    filter_backends = (filters.OrderingFilter,)
+    ordering = ('left_id',)
 
 class ForumReadView(generics.RetrieveAPIView):
     serializer_class = ForumSerializer
