@@ -60,6 +60,6 @@ class TopicsRSS(Feed):
     def item_link(self, item):
         return FORUM_PATH+'viewtopic.php?t=%s' % (item.topic_id)
 
-class TopicsAtom(PostsRSS):
+class TopicsAtom(TopicsRSS):
     feed_type = Atom1Feed
     subtitle = TopicsRSS.description
