@@ -1,8 +1,9 @@
 Requirements
 ------------
 
-Be sure to have installed mysql and mysql-devel
+Be sure to have installed python-devel, mysql (client) and mysql-devel
 
+    easy_install -U distribute
     pip install MySQL-python
     pip install Django
     pip install djangorestframework
