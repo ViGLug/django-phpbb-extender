@@ -13,12 +13,15 @@ Installation
 ------------
 
     git clone git://github.com/frafra/django-phpbb-extender.git
-    cd django_phpbb_extender # project directory
+    cd django-phpbb-extender # project directory
     mkdir static
     cd static
-    wget http://twitter.github.io/bootstrap/assets/bootstrap.zip
-    unzip bootstrap.zip
-    rm bootstrap.zip
+    wget https://github.com/twbs/bootstrap/archive/v3.0.0.zip
+    unzip v3.0.0
+    rm v3.0.0
+    mv bootstrap-3.0.0/dist bootstrap
+    rm -r bootstrap-3.0.0
+    cd ..
 
 Configuration
 -------------
@@ -33,4 +36,4 @@ Configuration
 Run
 ---
 
-    python manage.py runserver
+    python manage.py runserver 0.0.0.0:8000
