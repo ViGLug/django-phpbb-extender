@@ -13,6 +13,8 @@ from django_phpbb_extender.forum_settings import (
     FORUM_DESC,
 )
 
+import datetime
+
 class PostsRSS(Feed):
     title = FORUM_NAME
     link = FORUM_PATH
@@ -33,6 +35,9 @@ class PostsRSS(Feed):
     def item_link(self, item):
         return FORUM_PATH+'viewtopic.php?p=%s#p%s' % (
             item.post_id, item.post_id)
+    
+    def item_pubdate(self, item):
+        return datetime.datetime.fromtimestamp(item.post_time)
 
 class PostsAtom(PostsRSS):
     feed_type = Atom1Feed
@@ -59,6 +64,9 @@ class TopicsRSS(Feed):
     
     def item_link(self, item):
         return FORUM_PATH+'viewtopic.php?t=%s' % (item.topic_id)
+    
+    def item_pubdate(self, item):
+        return datetime.datetime.fromtimestamp(item.topic_time)
 
 class TopicsAtom(TopicsRSS):
     feed_type = Atom1Feed
