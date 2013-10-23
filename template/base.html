@@ -4,7 +4,7 @@
 <head>
     <title>Latest {{ latest|length }} {{ category }} from {{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link type="application/rss+xml" rel="alternate" href="{% url 'topics_rss' %}" />
     <link type="application/atom+xml" rel="alternate" href="{% url 'topics_atom' %}" />
 </head>
@@ -52,7 +52,7 @@
 </div>
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>
