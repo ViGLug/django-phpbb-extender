@@ -12,16 +12,7 @@ Be sure to have installed python-devel, mysql (client) and mysql-devel
 Installation
 ------------
 
-    git clone git://github.com/frafra/django-phpbb-extender.git
-    cd django-phpbb-extender # project directory
-    mkdir static
-    cd static
-    wget https://github.com/twbs/bootstrap/archive/v3.0.0.zip
-    unzip v3.0.0
-    rm v3.0.0
-    mv bootstrap-3.0.0/dist bootstrap
-    rm -r bootstrap-3.0.0
-    cd ..
+    git clone git://github.com/viglug/django-phpbb-extender.git
 
 Configuration
 -------------
